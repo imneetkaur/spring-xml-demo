@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean id="actor" class="com.stackroute.domain.Actor" scope="singleton">
+        <property name="name" value="Shahrukh" />
+        <property name="gender" value="Male" />
+        <property name="age" value="52" />
+    </bean>
+    <bean id = "movie" class = "com.stackroute.domain.Movie"  scope="singleton">
+        <property name="movieName" value="NamasteLondon" />
+        <property name="genre" value="Comedy" />
+        <property name="actor" ref="actor" />
+        <constructor-arg ref="actor" />
+    </bean>
+</beans>
