@@ -1,20 +1,23 @@
 package com.stackroute.domain;
 
+import com.stackroute.domain.Actor;
+
 public class Movie {
     private String movieName;
     private String genre;
     Actor actor;
 
     public Movie() {
-        System.out.println("MOVIE");
+        //System.out.println("MOVIE");
     }
-    //constructor injection
+    //constructor
     public Movie(Actor actor){
         this.actor=actor;
     }
     public Movie(String movieName, String genre,Actor actor) {
         this.movieName = movieName;
         this.genre = genre;
+        this.actor=actor;
     }
 
     public String getMovieName() {
