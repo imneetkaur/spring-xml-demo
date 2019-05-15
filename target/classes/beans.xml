@@ -5,17 +5,32 @@
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- bean definitions here -->
-
     <bean id="actor" class="com.stackroute.domain.Actor" scope="singleton">
-        <property name="name" value="Shahrukh" />
+        <!--constructor-injection when we don't have setter methods-->
+        <!-- <constructor-arg type="java.lang.String" value="Sanju" />
+         <constructor-arg type="java.lang.String" value="Male" />
+         <constructor-arg type="int" value="56" />-->
+        <property name="name" value="Shahid" />
         <property name="gender" value="Male" />
-        <property name="age" value="52" />
+        <property name="age" value="35" />
     </bean>
-    <bean id = "movie" class = "com.stackroute.domain.Movie"  scope="singleton">
-        <property name="movieName" value="NamasteLondon" />
-        <property name="genre" value="Comedy" />
-        <property name="actor" ref="actor" />
-        <constructor-arg ref="actor" />
+    <bean id="actor1" class="com.stackroute.domain.Actor" scope="singleton">
+        <property name="name" value="Ajay" />
+        <property name="gender" value="Male" />
+        <property name="age" value="45" />
     </bean>
+    <bean id="actor2" class="com.stackroute.domain.Actor" scope="singleton">
+        <property name="name" value="Ranvir" />
+        <property name="gender" value="Male" />
+        <property name="age" value="35" />
+    </bean>
+    <bean id="movie" class="com.stackroute.domain.Movie" autowire="byName">
+        <constructor-arg index="0" ref="actor" />
+        <property name="movieName" value="Kite" />
+        <property name="genre" value="Romance" />
+    </bean>
+    <bean class="com.stackroute.domain.BeanLifeCycleDemoBean" scope="singleton"  init-method="customInit" destroy-method="customDestroy">
+    </bean>
+
+
 </beans>
